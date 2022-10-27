@@ -5,18 +5,10 @@ import { Button } from "../components/Button";
 import { useState } from "react";
 
 const Login = () => {
-  const [modalVisible, setModalVisible] = useState(true);
 
   return (
     <>
-      <LoginModal isOpened={modalVisible}
-      closeModal={() => setModalVisible(false)} />
-      <div
-        onClick={() => setModalVisible(false)}
-        className={`modal absolute md:fixed w-full min-h-screen h-full flex flex-1 top-0 items-center justify-center bg-black bg-opacity-70 z-20 inset-0 ${
-          modalVisible ? '' : 'hidden'
-        }`}
-      ></div>
+      
 
       <Layout title="Login - Beacon School">
         <div className="h-screen flex flex-col justify-center items-center">
@@ -43,9 +35,11 @@ const Login = () => {
                 placeholder="Endereço de e-mail"
               />
 
-              <Button>
+              <button
+                className={`bg-[#bfbfbf] text-[ "#fff"] w-4/5 lg:w-1/3 rounded-xl p-4 hover:bg-[#55d2d9] font-bold transition duration-300`}
+              >
                 Continuar
-              </Button>
+              </button>
             </div>
           </div>
         </div>
