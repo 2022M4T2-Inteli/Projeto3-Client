@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Layout } from "../components/Layout";
-import { Button } from "../components/Button";
-import { Arrow } from "../assets/Arrow";
-import { LoginModal } from "../components/LoginModal";
+import { Layout } from "../../components/Layout";
+import { Button } from "../../components/Button";
+import { Arrow } from "../../assets/Arrow";
+import { LoginModal } from "../../components/LoginModal";
 
 const Login2 = () => {
   const [email, setEmail] = useState("email@email.com");
@@ -23,6 +23,7 @@ const Login2 = () => {
           modalVisible ? "" : "hidden"
         }`}
       ></div>
+      
       <Layout title="Login - Beacon School">
         <div className="mt-5 ml-7">
           <Arrow size={35} />
@@ -120,7 +121,7 @@ const Login2 = () => {
             <Button className={"mt-16 mb-4"}> Continuar </Button>
 
             <Button bgColor={"#00000000"} bgHoverColor={"#00000000"} onClick={
-              () => setModalVisible(true)
+              () => console.log(true)
             }>
               <span className="text-[#Fa7901]">Não recebi meu codígo</span>
             </Button>

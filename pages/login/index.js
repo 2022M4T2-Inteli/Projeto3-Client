@@ -1,15 +1,15 @@
-import { IOBeeLogo } from "../assets/IOBeeLogo";
-import { Layout } from "../components/Layout";
-import { LoginModal } from "../components/LoginModal";
-import { Button } from "../components/Button";
+import { IOBeeLogo } from "../../assets/IOBeeLogo";
+import { Layout } from "../../components/Layout";
+import { LoginModal } from "../../components/LoginModal";
+import { Button } from "../../components/Button";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 const Login = () => {
+  const router = useRouter();
 
   return (
     <>
-      
-
       <Layout title="Login - Beacon School">
         <div className="h-screen flex flex-col justify-center items-center">
           {/* Logo and Text */}
@@ -37,6 +37,9 @@ const Login = () => {
 
               <button
                 className={`bg-[#bfbfbf] text-[ "#fff"] w-4/5 lg:w-1/3 rounded-xl p-4 hover:bg-[#55d2d9] font-bold transition duration-300`}
+                onClick={() => {
+                  router.push("/login/verification");
+                }}
               >
                 Continuar
               </button>
