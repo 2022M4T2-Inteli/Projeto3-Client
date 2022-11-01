@@ -1,69 +1,35 @@
-import { Layout } from "../../components/Layout";
-import { Arrow } from "../../assets/Arrow";
-import { Button } from "../../components/Button";
-import { Profile } from "../../assets/Profile";
-import { Card } from "../../components/Card";
-import { useState } from "react";
-import { useRouter } from "next/router";
+import { Layout } from '../../components/Layout';
+import { Arrow } from '../../assets/Arrow';
+import { Button } from '../../components/Button';
+import { Profile } from '../../assets/Profile';
+import { DocumentCard } from '../../components/Card';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 const Cadastro = () => {
   let allCollaborators = [
     {
-      name: "Amanda Ribeiro",
-      occupation: "Gerente de patrimônio",
-      date: "09/2022",
-      status: "ATIVO",
+      title: 'Relatorio Geral',
+      about: 'Dispositivos Ativos',
+      date: '25/09',
+      month: 'Setembro',
     },
     {
-      name: "Mariana Gomes",
-      occupation: "Financeiro",
-      date: "09/2022",
-      status: "ATIVO",
+      title: 'Relatorio Geral',
+      about: 'Dispositivos Emprestados',
+      date: '07/06',
+      month: 'Junho',
     },
     {
-      name: "Bianca Barbosa",
-      occupation: "Técnico de TI",
-      date: "08/2022",
-      status: "ATIVO",
-    },{
-      name: "Amanda Ribeiro",
-      occupation: "Gerente de patrimônio",
-      date: "09/2022",
-      status: "ATIVO",
-    },
-    {
-      name: "Mariana Gomes",
-      occupation: "Financeiro",
-      date: "09/2022",
-      status: "ATIVO",
-    },
-    {
-      name: "Bianca Barbosa",
-      occupation: "Técnico de TI",
-      date: "08/2022",
-      status: "ATIVO",
-    },{
-      name: "Amanda Ribeiro",
-      occupation: "Gerente de patrimônio",
-      date: "09/2022",
-      status: "ATIVO",
-    },
-    {
-      name: "Mariana Gomes",
-      occupation: "Financeiro",
-      date: "09/2022",
-      status: "ATIVO",
-    },
-    {
-      name: "Bianca Barbosa",
-      occupation: "Técnico de TI",
-      date: "08/2022",
-      status: "ATIVO",
+      title: 'Relatorio Geral',
+      about: 'Ambos Dispositivos',
+      date: '05/01',
+      month: 'Janeiro',
     },
   ];
 
   const [collaborators, setCollaborators] = useState(allCollaborators);
-  const router = useRouter()
+  const router = useRouter();
 
   const filterCollaborators = (e) => {
     const filteredCollaborators = collaborators.filter((collaborator) => {
@@ -74,7 +40,7 @@ const Cadastro = () => {
 
     setCollaborators(filteredCollaborators);
 
-    if (e.target.value === "") {
+    if (e.target.value === '') {
       setCollaborators(allCollaborators);
     }
   };
@@ -87,9 +53,12 @@ const Cadastro = () => {
       <div className="w-4/5 md:w-1/2 lg:w-1/3 flex flex-col items-center">
         <div className="flex flex-row justify-between w-full mt-10">
           <p className="mt-3 text-3xl">Funcionários</p>
-          <button className="bg-[#55d2d9] text-[#fff] rounded-full px-4 py-1  hover:bg-[#55d2d9] font-bold transition duration-300 text-lg" onClick={()=>{
-            router.push('/cadastro/adicionar')
-          }}>
+          <button
+            className="bg-[#55d2d9] text-[#fff] rounded-full px-4 py-1  hover:bg-[#55d2d9] font-bold transition duration-300 text-lg"
+            onClick={() => {
+              router.push('/cadastro/adicionar');
+            }}
+          >
             Cadastrar +
           </button>
         </div>
@@ -131,7 +100,7 @@ const Cadastro = () => {
         <hr className="mb-4 bg-[#55D2D9] w-full p-[0.075rem]" />
 
         {collaborators.map((collaborator) => (
-          <Card {...collaborator} key={collaborator.name} />
+          <DocumentCard {...collaborator} key={collaborator.name} />
         ))}
       </div>
     </Layout>
