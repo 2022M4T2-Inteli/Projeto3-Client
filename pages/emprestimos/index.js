@@ -86,7 +86,7 @@ const Cadastro = () => {
       </div>
       <div className="w-4/5 md:w-1/2 lg:w-1/3 flex flex-col items-center">
         <div className="flex flex-row justify-between w-full mt-10">
-          <p className="mt-3 text-3xl">Funcionários</p>
+          <p className="mt-3 text-3xl">Emprestimos</p>
           <button className="bg-[#55d2d9] text-[#fff] rounded-full px-4 py-1  hover:bg-[#55d2d9] font-bold transition duration-300 text-lg" onClick={()=>{
             router.push('/cadastro/adicionar')
           }}>

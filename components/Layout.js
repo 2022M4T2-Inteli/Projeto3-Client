@@ -4,7 +4,7 @@ export const Layout = ({ title, children, className }) => {
   return (
     <div>
       <Head>
-        <title>{title}</title>
+        <title>{title ? `${title} - Beacon School` : "Beacon School"}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
