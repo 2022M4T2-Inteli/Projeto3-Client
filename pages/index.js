@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Layout } from '../components/Layout';
+import { Layout } from '@components/Layout';
 
 export default function Home() {
-  const router = useRouter();
   return (
     <Layout>
       <div className='flex flex-1 flex-col justify-evenly text-center h-screen w-screen'>

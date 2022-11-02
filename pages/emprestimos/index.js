@@ -1,11 +1,11 @@
-import { Layout } from '../../components/Layout';
-import { Arrow } from '../../assets/Arrow';
-import { Button } from '../../components/Button';
-import { Profile } from '../../assets/Profile';
-import { DeviceCard } from '../../components/Card';
+import { Layout } from '@components/Layout';
+import { Arrow } from '@assets/Arrow';
+import { Button } from '@components/Button';
+import { Profile } from '@assets/Profile';
+import { DeviceCard } from '@components/Card';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { EmprestimoModal } from '../../components/EmprestimoModal';
+import { EmprestimoModal } from '@components/Modal';
 
 const Emprestimo = () => {
   let devices = [
@@ -129,14 +129,16 @@ const Emprestimo = () => {
                   setCongrats(true);
                   console.log(congrats);
                 }}
+                key={device.name}
               />
               <div
                 className="w-full cursor-pointer"
+                key={device.name}
                 onClick={() => {
                   setIsModalOpened(true);
                 }}
               >
-                <DeviceCard {...device} key={device.name} />
+                <DeviceCard {...device} />
               </div>
             </>
           ))}

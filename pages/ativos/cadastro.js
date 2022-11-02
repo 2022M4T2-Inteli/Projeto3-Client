@@ -1,6 +1,6 @@
-import { Layout } from '../../components/Layout';
-import { Arrow } from '../../assets/Arrow';
-import { Input } from '../../components/Input';
+import { Layout } from '@components/Layout';
+import { Arrow } from '@assets/Arrow';
+import { Input } from '@components/Input';
 
 export const Cadastro = () => {
   return (

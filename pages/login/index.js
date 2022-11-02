@@ -1,7 +1,7 @@
-import { IOBeeLogo } from '../../assets/IOBeeLogo';
-import { Layout } from '../../components/Layout';
-import { LoginModal } from '../../components/LoginModal';
-import { Button } from '../../components/Button';
+import { IOBeeLogo } from '@assets/IOBeeLogo';
+import { Layout } from '@components/Layout';
+import { LoginModal } from '@components/Modal';
+import { Button } from '@components/Button';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 

@@ -1,9 +1,9 @@
-import { Arrow } from "../../assets/Arrow";
-import { Layout } from "../../components/Layout";
-import { Input } from "../../components/Input";
+import { Arrow } from "@assets/Arrow";
+import { Layout } from "@components/Layout";
+import { Input } from "@components/Input";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { Button } from "../../components/Button";
+import { Button } from "@components/Button";
 
 const Adicionar = () => {
   const { register, handleSubmit } = useForm();

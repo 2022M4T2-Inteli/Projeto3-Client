@@ -1,14 +1,24 @@
-import { Arrow } from '../../assets/Arrow';
-import { ProfileMais } from '../../assets/ProfileMais';
-import { Layout } from '../../components/Layout';
-import { Leave } from '../../assets/Leave';
-import { BeaconSchoolLogo } from '../../assets/BeaconSchoolLogo';
+import { Arrow } from '@assets/Arrow';
+import { ProfileMais } from '@assets/ProfileMais';
+import { Layout } from '@components/Layout';
+import { Leave } from '@assets/Leave';
+import { BeaconSchoolLogo } from '@assets/BeaconSchoolLogo';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { Card } from '../../components/Card';
+import { Card } from '@components/Card';
+
+import {
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  Bar,
+  BarChart,
+} from 'recharts';
 
 import Link from 'next/link';
-import { Footer } from '../../components/Footer';
+import { Footer } from '@components/Footer';
 
 export const EmprestimoCard = ({ list }) => {
   return list.map((emprestimo) => {
@@ -82,6 +92,24 @@ const Home = () => {
     },
   ]);
 
+  const data = [
+    {
+      name: 'Semana 1',
+      cadastrados: 98,
+      emprestados: 50,
+    },
+    {
+      name: 'Semana 2',
+      cadastrados: 90,
+      emprestados: 60,
+    },
+    {
+      name: 'Semana 3',
+      cadastrados: 95,
+      emprestados: 78,
+    },
+  ];
+
   return (
     <Layout
       title="Home"
@@ -117,6 +145,29 @@ const Home = () => {
             <p className="text-6xl">56</p>
             <span className="text-2xl ml-2">Dispositivos em uso</span>
           </button>
+
+          <BarChart
+            width={450}
+            height={300}
+            data={data}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+
+            barGap={7.5}
+          >
+            <CartesianGrid strokeDasharray="0" vertical={false} opacity={0.3} />
+            <XAxis dataKey="name" axisLine={false} />
+            <YAxis axisLine={false} />
+            <Tooltip />
+            <Legend align="left" />
+
+            <Bar dataKey="emprestados" fill="#fa7901" barSize={20} />
+            <Bar dataKey="cadastrados" fill="#55d2d9" barSize={20} />
+          </BarChart>
 
           <div className="w-4/5 lg:w-1/3 mt-4">
             <div className="flex flex-row justify-between mt-4 mb-4">

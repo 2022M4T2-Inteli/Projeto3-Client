@@ -1,7 +1,7 @@
-import { Profile } from '../assets/Profile';
-import { Out } from '../assets/Out';
-import { In } from '../assets/In';
-import { Download } from '../assets/Download';
+import { Profile } from '@assets/Profile';
+import { Out } from '@assets/Out';
+import { In } from '@assets/In';
+import { Download } from '@assets/Download';
 
 export const Card = ({ name, occupation, date, status }) => {
   return (

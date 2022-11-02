@@ -1,8 +1,8 @@
-import { Layout } from '../../components/Layout';
-import { Arrow } from '../../assets/Arrow';
-import { Button } from '../../components/Button';
-import { Profile } from '../../assets/Profile';
-import { DocumentCard } from '../../components/Card';
+import { Layout } from '@components/Layout';
+import { Arrow } from '@assets/Arrow';
+import { Button } from '@components/Button';
+import { Profile } from '@assets/Profile';
+import { DocumentCard } from '@components/Card';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Devices } from '../assets/Devices';
-import { Start } from '../assets/Start';
-import { Documents } from '../assets/Documents';
+import { Devices } from '@assets/Devices';
+import { Start } from '@assets/Start';
+import { Documents } from '@assets/Documents';
 
 export const Footer = () => {
   return (

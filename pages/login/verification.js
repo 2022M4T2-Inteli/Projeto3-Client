@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Layout } from "../../components/Layout";
-import { Button } from "../../components/Button";
-import { Arrow } from "../../assets/Arrow";
-import { LoginModal } from "../../components/LoginModal";
+import { Layout } from "@components/Layout";
+import { Button } from "@components/Button";
+import { Arrow } from "@assets/Arrow";
+import { LoginModal } from "@components/LoginModal";
 
 const Login2 = () => {
   const [email, setEmail] = useState("email@email.com");
