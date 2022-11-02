@@ -1,33 +1,33 @@
 import { Layout } from '@components/Layout';
 import { Arrow } from '@assets/Arrow';
 import {
-    CartesianGrid,
-    XAxis,
-    YAxis,
-    Tooltip,
-    Legend,
-    Bar,
-    BarChart,
-  } from 'recharts';
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  Bar,
+  BarChart,
+} from 'recharts';
 
 export const Dashboard = () => {
-    const data = [
-        {
-          name: 'Semana 1',
-          cadastrados: 98,
-          emprestados: 50,
-        },
-        {
-          name: 'Semana 2',
-          cadastrados: 90,
-          emprestados: 60,
-        },
-        {
-          name: 'Semana 3',
-          cadastrados: 95,
-          emprestados: 78,
-        },
-      ];
+  const data = [
+    {
+      name: 'Semana 1',
+      cadastrados: 98,
+      emprestados: 50,
+    },
+    {
+      name: 'Semana 2',
+      cadastrados: 90,
+      emprestados: 60,
+    },
+    {
+      name: 'Semana 3',
+      cadastrados: 95,
+      emprestados: 78,
+    },
+  ];
   return (
     <Layout title="Cadastro" className="bg-white flex flex-col items-center">
       <div className="w-full pt-4 pl-4">
@@ -35,7 +35,9 @@ export const Dashboard = () => {
       </div>
       <div className="w-4/5 md:w-1/2 lg:w-1/3 flex flex-col items-center">
         <div className="w-full flex flex-col justify-center">
-          <p className="pb-6 font-bold text-2xl justify-center text-center w-full">Dashboard</p>
+          <p className="pb-6 font-bold text-2xl justify-center text-center w-full">
+            Dashboard
+          </p>
           <input
             type="text"
             id="input-group-1"
@@ -43,7 +45,8 @@ export const Dashboard = () => {
             placeholder="Procure dispositivo..."
           />
         </div>
-        <BarChart
+        <div className="w-full flex flex-col justify-center pt-5 shadow-lg border-2 border-red-500">
+          <BarChart
             width={450}
             height={300}
             data={data}
@@ -53,7 +56,7 @@ export const Dashboard = () => {
               left: 20,
               bottom: 5,
             }}
-
+            title={'Dispositivos Cadastrados'}
             barGap={7.5}
           >
             <CartesianGrid strokeDasharray="0" vertical={false} opacity={0.3} />
@@ -65,6 +68,7 @@ export const Dashboard = () => {
             <Bar dataKey="emprestados" fill="#fa7901" barSize={20} />
             <Bar dataKey="cadastrados" fill="#55d2d9" barSize={20} />
           </BarChart>
+        </div>
       </div>
     </Layout>
   );

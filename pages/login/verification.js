@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Layout } from "@components/Layout";
 import { Button } from "@components/Button";
 import { Arrow } from "@assets/Arrow";
-import { LoginModal } from "@components/LoginModal";
+import { LoginModal } from "@components/Modal";
 
 const Login2 = () => {
   const [email, setEmail] = useState("email@email.com");
