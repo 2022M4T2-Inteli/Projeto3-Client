@@ -13,7 +13,7 @@ import { Footer } from '../../components/Footer';
 export const EmprestimoCard = ({ list }) => {
   return list.map((emprestimo) => {
     return (
-      <div className="w-full">
+      <div className="w-full" key={emprestimo.name}>
         <Card {...emprestimo} />
       </div>
     );
@@ -23,7 +23,7 @@ export const EmprestimoCard = ({ list }) => {
 export const PatrimonioCard = ({ list }) => {
   return list.map((patrimonio) => {
     return (
-      <div className="w-full">
+      <div className="w-full" key={patrimonio.id}>
         <Card {...patrimonio} />
       </div>
     );
