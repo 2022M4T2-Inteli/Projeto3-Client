@@ -7,7 +7,7 @@ export const Footer = () => {
   return (
     <div className="px-4 py-5 absolute w-full">
       <div className="bg-white flex flex-row justify-around rounded-lg">
-        <Link href="/dispositivos">
+        <Link href="/ativos">
           <a className="flex flex-col justify-center items-center">
             <Devices className="mb-2" />
             <p className="text-gray-400">Dispositivos</p>
@@ -21,7 +21,7 @@ export const Footer = () => {
           </a>
         </Link>
 
-        <Link href="/documentos">
+        <Link href="/relatorios">
           <a className="flex flex-col justify-center items-center">
             <Documents className="mb-2" />
             <p className="text-gray-400">Documentos</p>

@@ -101,8 +101,16 @@ const Home = () => {
         {/* Header */}
         <div className="bg-[#ea1d2c] w-full flex flex-col pt-8">
           <div className="w-full flex flex-row justify-end px-8">
-            <ProfileMais className={'mr-4'} />
-            <Leave />
+            <ProfileMais
+              className={'cursor-pointer mr-4'}
+              onClick={() => router.push('/funcionarios')}
+            />
+            <Leave
+              className={'cursor-pointer'}
+              onClick={() => {
+                router.push('/login');
+              }}
+            />
           </div>
 
           <div className="flex flex-row justify-start w-full wb-10">
@@ -121,7 +129,7 @@ const Home = () => {
           <button
             className="flex justify-center w-4/5 lg:w-1/3 px-2 py-6 bg-gradient-to-br from-[#3377FF] to-[#55d2d9] rounded-[2rem] text-white items-center"
             onClick={() => {
-              router.push('/dispositivos');
+              router.push('/ativos');
             }}
           >
             <p className="text-6xl">56</p>

@@ -17,18 +17,16 @@ export const Cadastro = () => {
           titile={'Nome do Dispositivo: '}
           placeholder={'Digite o nome do dispositivo'}
         />
-          <Input
+        <Input
           type={'text'}
           titile={'Campus: '}
           placeholder={'Digite o nome do Campus'}
         />
-          <Input
+        <Input
           type={'number'}
           titile={'Nome do Dispositivo: '}
           placeholder={'Digite o nome do dispositivo'}
         />
-        
-        
       </div>
     </Layout>
   );

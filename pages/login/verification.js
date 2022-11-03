@@ -1,12 +1,14 @@
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { Layout } from "@components/Layout";
-import { Button } from "@components/Button";
-import { Arrow } from "@assets/Arrow";
-import { LoginModal } from "@components/Modal";
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { Layout } from '@components/Layout';
+import { Button } from '@components/Button';
+import { Arrow } from '@assets/Arrow';
+import { LoginModal } from '@components/Modal';
 
-const Login2 = () => {
-  const [email, setEmail] = useState("email@email.com");
+const Verification = () => {
+  const router = useRouter();
+
+  const [email, setEmail] = useState('email@email.com');
   const [token, setToken] = useState([]);
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -20,10 +22,10 @@ const Login2 = () => {
       <div
         onClick={() => setModalVisible(false)}
         className={`modal absolute md:fixed w-full min-h-screen h-full flex flex-1 top-0 items-center justify-center bg-black bg-opacity-70 z-20 inset-0 ${
-          modalVisible ? "" : "hidden"
+          modalVisible ? '' : 'hidden'
         }`}
       ></div>
-      
+
       <Layout title="Login - Beacon School">
         <div className="mt-5 ml-7">
           <Arrow size={35} />
@@ -118,11 +120,19 @@ const Login2 = () => {
               />
             </div>
 
-            <Button className={"mt-16 mb-4"}> Continuar </Button>
+            <Button
+              className={'mt-16 mb-4'}
+              onClick={() => router.push('/home')}
+            >
+              {' '}
+              Continuar{' '}
+            </Button>
 
-            <Button bgColor={"#00000000"} bgHoverColor={"#00000000"} onClick={
-              () => console.log(true)
-            }>
+            <Button
+              bgColor={'#00000000'}
+              bgHoverColor={'#00000000'}
+              onClick={() => console.log(true)}
+            >
               <span className="text-[#Fa7901]">Não recebi meu codígo</span>
             </Button>
           </div>
@@ -132,4 +142,4 @@ const Login2 = () => {
   );
 };
 
-export default Login2;
+export default Verification;
