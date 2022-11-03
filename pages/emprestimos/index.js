@@ -44,23 +44,13 @@ const Emprestimo = () => {
   ];
 
   const [allDevices, setAllDevices] = useState(devices);
+
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [congrats, setCongrats] = useState(false);
 
-  const toggleModal = () => {
-    setIsModalOpened(!isModalOpened);
-    setCongrats(false);
-  };
-
   const router = useRouter();
 
-  const filterCollaborators = (e) => {
-    const search = e.target.value;
-    const filtered = devices.filter((device) => {
-      return device.device.toLowerCase().includes(search.toLowerCase());
-    });
-    setAllDevices(filtered);
-  };
+  const filterCollaborators = (e) => {};
 
   return (
     <>
@@ -90,7 +80,9 @@ const Emprestimo = () => {
               id="input-group-1"
               className="w-full pr-10 p-2.5 bg-[#F5F9FD] rounded-2xl px-2 py-4"
               placeholder="Procure dispositivo..."
-              onChange={filterCollaborators}
+              onChange={(e) => {
+                filterCollaborators(e);
+              }}
             />
             <div className="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
               <svg
@@ -118,21 +110,22 @@ const Emprestimo = () => {
 
           <hr className="mb-4 bg-[#55D2D9] w-full p-[0.075rem]" />
 
-          {devices.map((device) => (
+          {allDevices.map((device) => (
             <>
               <EmprestimoModal
+                device={device} 
                 isOpened={isModalOpened}
-                device={device}
-                closeModal={toggleModal}
                 congrats={congrats}
+                closeModal={() => {
+                  setIsModalOpened(false);
+                }}
                 setCongrats={() => {
                   setCongrats(true);
-                  console.log(congrats);
                 }}
                 key={device.name}
               />
               <div
-                className="w-full cursor-pointer"
+                className="w-full cursor-pointer mb-2"
                 key={device.name}
                 onClick={() => {
                   setIsModalOpened(true);

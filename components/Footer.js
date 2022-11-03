@@ -1,12 +1,12 @@
-import Link from "next/link";
+import Link from 'next/link';
 import { Devices } from '@assets/Devices';
 import { Start } from '@assets/Start';
 import { Documents } from '@assets/Documents';
 
-export const Footer = () => {
+export const HomeFooter = () => {
   return (
-    <div className="px-4 py-5 absolute w-full">
-      <div className="bg-white flex flex-row justify-around rounded-lg">
+    <div className="px-4 pb-4 pt-2 w-full fixed bottom-0">
+      <div className="bg-white flex flex-row justify-around mx-auto border-2 border-gray-50 rounded-lg shadow-xl w-full md:w-4/5 lg:w-1/3">
         <Link href="/ativos">
           <a className="flex flex-col justify-center items-center">
             <Devices className="mb-2" />

@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Button } from '@components/Button';
 import { useRouter } from 'next/router';
+import { SuccessModal } from 'components/Modal';
 
 export const Modal = ({ closeModal, congrats, setCongrats, device }) => {
   const router = useRouter();
@@ -55,7 +56,13 @@ const Emprestimo = () => {
 
   return (
     <>
-      <Modal closeModal={setCongrats} congrats={congrats} device={{}} />
+      <SuccessModal
+        message={
+          'A entrega do ativo já foi computada no sistema e ele não está maislistado na lista de empréstimos da instituição.'
+        }
+        closeModal={() => setCongrats(false)}
+        isOpened={congrats}
+      />
 
       <Layout title="Cadastro" className="bg-white flex flex-col items-center">
         <div className="w-full pt-4 pl-4">

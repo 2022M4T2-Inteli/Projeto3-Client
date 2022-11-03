@@ -19,12 +19,6 @@ const Verification = () => {
         isOpened={modalVisible}
         closeModal={() => setModalVisible(false)}
       />
-      <div
-        onClick={() => setModalVisible(false)}
-        className={`modal absolute md:fixed w-full min-h-screen h-full flex flex-1 top-0 items-center justify-center bg-black bg-opacity-70 z-20 inset-0 ${
-          modalVisible ? '' : 'hidden'
-        }`}
-      ></div>
 
       <Layout title="Login - Beacon School">
         <div className="mt-5 ml-7">
@@ -131,7 +125,7 @@ const Verification = () => {
             <Button
               bgColor={'#00000000'}
               bgHoverColor={'#00000000'}
-              onClick={() => console.log(true)}
+              onClick={() => setModalVisible(true)}
             >
               <span className="text-[#Fa7901]">Não recebi meu codígo</span>
             </Button>

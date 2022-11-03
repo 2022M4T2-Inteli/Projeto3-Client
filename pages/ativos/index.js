@@ -1,13 +1,18 @@
-import { Arrow } from "@assets/Arrow";
+import { Arrow } from '@assets/Arrow';
 
-const { Layout } = require("components/Layout");
+const { Layout } = require('components/Layout');
 
 const Ativos = () => {
   return (
     <Layout title="Cadastro" className="bg-white flex flex-col items-center">
       <div className="w-full pt-4 pl-4">
         <Arrow size={35} />
-        <div className="w-full flex flex-row justify-center"></div>
+      </div>
+
+      <div className="w-4/5 md:w-1/2 lg:w-1/3 flex flex-col items-center">
+        <div className="w-full flex flex-row justify-center">
+          <p className="font-bold pt-[2rem] text-xl">Cadastro de Ativo</p>
+        </div>
       </div>
     </Layout>
   );

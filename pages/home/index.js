@@ -6,19 +6,7 @@ import { BeaconSchoolLogo } from '@assets/BeaconSchoolLogo';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Card } from '@components/Card';
-
-import {
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  Bar,
-  BarChart,
-} from 'recharts';
-
-import Link from 'next/link';
-import { Footer } from '@components/Footer';
+import { HomeFooter } from 'components/Footer';
 
 export const EmprestimoCard = ({ list }) => {
   return list.map((emprestimo) => {
@@ -100,27 +88,29 @@ const Home = () => {
       <div className="w-full">
         {/* Header */}
         <div className="bg-[#ea1d2c] w-full flex flex-col pt-8">
-          <div className="w-full flex flex-row justify-end px-8">
-            <ProfileMais
-              className={'cursor-pointer mr-4'}
-              onClick={() => router.push('/funcionarios')}
-            />
-            <Leave
-              className={'cursor-pointer'}
-              onClick={() => {
-                router.push('/login');
-              }}
-            />
-          </div>
+          <div className="w-full md:w-4/5 lg:w-1/3 mx-auto">
+            <div className="w-full flex flex-row justify-end px-8">
+              <ProfileMais
+                className={'cursor-pointer mr-4'}
+                onClick={() => router.push('/funcionarios')}
+              />
+              <Leave
+                className={'cursor-pointer'}
+                onClick={() => {
+                  router.push('/login');
+                }}
+              />
+            </div>
 
-          <div className="flex flex-row justify-start w-full wb-10">
-            <BeaconSchoolLogo
-              width={128}
-              className={'rounded-full translate-y-[50%] ml-8'}
-            />
-            <p className="font-bold text-white text-3xl translate-y-[60%] ml-4">
-              Beacon School
-            </p>
+            <div className="flex flex-row justify-start w-full wb-10">
+              <BeaconSchoolLogo
+                width={128}
+                className={'rounded-full translate-y-[50%] ml-8'}
+              />
+              <p className="font-bold text-white text-3xl translate-y-[60%] ml-4">
+                Beacon School
+              </p>
+            </div>
           </div>
         </div>
 
@@ -136,7 +126,7 @@ const Home = () => {
             <span className="text-2xl ml-2">Dispositivos em uso</span>
           </button>
 
-          <div className="w-4/5 lg:w-1/3 mt-4">
+          <div className="w-4/5 lg:w-1/3 mt-4 pb-25">
             <div className="flex flex-row justify-between mt-4 mb-4">
               <button
                 className={`${
@@ -170,11 +160,21 @@ const Home = () => {
             ) : (
               <PatrimonioCard list={patrimonioList} />
             )}
+            {cardToRender == 'emprestimo' ? (
+              <EmprestimoCard list={emprestimoList} />
+            ) : (
+              <PatrimonioCard list={patrimonioList} />
+            )}
+            {cardToRender == 'emprestimo' ? (
+              <EmprestimoCard list={emprestimoList} />
+            ) : (
+              <PatrimonioCard list={patrimonioList} />
+            )}
           </div>
         </div>
 
         {/* Footer */}
-        <Footer />
+        <HomeFooter />
       </div>
     </Layout>
   );
