@@ -1,3 +1,5 @@
+// Ícone de Dispositivos utilizado no footer
+
 export const Devices = (props) => {
   return (
     <svg

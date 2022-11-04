@@ -1,4 +1,4 @@
-import React from "react";
+// Ícone de Gráfico utilizado no footer
 
 export const Graph = (props) => {
   return (

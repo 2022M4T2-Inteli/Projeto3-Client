@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import { Devices } from '@assets/footer/Devices';
-import { Start } from '@assets/footer/Start';
-import { Documents } from '@assets/footer/Documents';
-import { Chart } from '@assets/Footer/Chart';
-import { Graph } from '@assets/Footer/Graph';
+import Link from "next/link";
+import { Chart } from "/assets/footer/Chart";
+import { Devices } from "/assets/footer/Devices";
+import { Documents } from "/assets/footer/Documents";
+import { Graph } from "/assets/footer/Graph";
+import { Start } from "/assets/footer/Start";
 
 export const Footer = (props) => {
   const selected = props.selected || 'home';

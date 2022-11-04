@@ -1,3 +1,5 @@
+// Ícone de Documento utilizado no footer
+
 export const Documents = (props) => {
   return (
     <svg

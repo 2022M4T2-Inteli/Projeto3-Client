@@ -1,3 +1,5 @@
+// Ícone de Gráfico utilizado no footer
+
 export const Chart = (props) => {
   return (
     <svg

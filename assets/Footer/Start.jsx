@@ -1,3 +1,5 @@
+// Ícone de Menu utilizado no footer
+
 export const Start = (props) => {
   return (
     <svg
