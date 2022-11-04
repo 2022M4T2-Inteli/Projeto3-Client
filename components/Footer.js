@@ -18,7 +18,7 @@ export const Footer = (props) => {
             <Devices className="mb-2" selected={selected === 'dispositivos'} />
 
             {selected == 'dispositivos' ? (
-              <p className="text-gray-400">Relatórios</p>
+              <p className="text-gray-400">Dispositivos</p>
             ) : (
               <p className="text-sm text-gray-500 opacity-0 hover:opacity-100 duration-300 absolute">
                 Dispositivos
