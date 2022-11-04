@@ -70,7 +70,7 @@ export const Dispositivos = () => {
         <div className="w-full pt-4 pl-4">
           <Arrow size={35} />
         </div>
-        <div className="w-4/5 md:w-1/2 lg:w-1/3 flex flex-col items-center">
+        <div className="w-4/5 md:w-1/2 lg:w-1/3 flex flex-col items-center pb-24">
           <div className="w-full flex flex-col pt-5 justify-center">
             <p className="font-bold text-center pb-5 text-2xl">Tag Sensor</p>
             <input

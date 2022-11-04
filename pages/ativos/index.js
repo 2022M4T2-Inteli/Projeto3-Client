@@ -44,6 +44,22 @@ const Ativos = () => {
       status: 'Diário',
       isIn: true,
     },
+    {
+      id: 8746832,
+      device: 'Dell Vostro 2480',
+      who: 'Amanda Ribeiro',
+      date: '09/2022',
+      status: 'Diário',
+      isIn: true,
+    },
+    {
+      id: 8746833,
+      device: 'Dell Vostro 2480',
+      who: 'Amanda Ribeiro',
+      date: '09/2022',
+      status: 'Diário',
+      isIn: true,
+    },
   ];
 
   const [allDevices, setAllDevices] = useState(devices);
@@ -75,7 +91,7 @@ const Ativos = () => {
         <div className="w-full pt-4 pl-4">
           <Arrow size={35} />
         </div>
-        <div className="w-4/5 md:w-1/2 lg:w-1/3 flex flex-col items-center">
+        <div className="w-4/5 md:w-1/2 lg:w-1/3 flex flex-col items-center pb-24">
           <div className="flex flex-row justify-between w-full mt-10">
             <p className="mt-3 text-3xl">Ativos</p>
             <button

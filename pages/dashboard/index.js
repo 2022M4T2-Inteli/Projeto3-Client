@@ -50,8 +50,8 @@ export const Dashboard = () => {
         </div>
         <div className="w-full flex flex-col justify-center pt-5 shadow-lg mt-8">
           <BarChart
-            width={450}
-            height={300}
+            width={400}
+            height={400}
             data={data}
             margin={{
               top: 5,

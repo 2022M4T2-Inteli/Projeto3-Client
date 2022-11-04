@@ -90,7 +90,7 @@ const Home = () => {
       <div className="w-full">
         {/* Header */}
         <div className="bg-[#ea1d2c] w-full flex flex-col pt-8">
-          <div className="w-full md:w-4/5 lg:w-1/3 mx-auto">
+          <div className="w-full md:w-5/6 lg:w-2/3 xl:w-1/3 mx-auto">
             <div className="w-full flex flex-row justify-end px-8">
               <ProfileMais
                 className={'cursor-pointer mr-4'}
@@ -104,10 +104,12 @@ const Home = () => {
               />
             </div>
 
-            <div className="flex flex-row justify-start w-full wb-10">
+            <div className="flex flex-row justify-start w-full">
               <BeaconSchoolLogo
                 width={128}
-                className={'rounded-full translate-y-[50%] ml-8'}
+                className={
+                  'rounded-full translate-y-[50%] ml-8 w-1/7'
+                }
               />
               <p className="font-bold text-white text-3xl translate-y-[60%] ml-4">
                 Beacon School
@@ -117,9 +119,9 @@ const Home = () => {
         </div>
 
         {/* Body */}
-        <div className="pt-24 flex flex-col items-center w-full">
+        <div className="pt-24 flex flex-col items-center w-full mb-24">
           <button
-            className="flex justify-center w-4/5 lg:w-1/3 px-2 py-6 bg-gradient-to-br from-[#3377FF] to-[#55d2d9] rounded-[2rem] text-white items-center"
+            className="flex justify-center w-4/5 md:w-5/6 lg:w-2/3 xl:w-1/3 px-2 py-6 bg-gradient-to-br from-[#3377FF] to-[#55d2d9] rounded-[2rem] text-white items-center"
             onClick={() => {
               router.push('/ativos');
             }}
@@ -128,13 +130,13 @@ const Home = () => {
             <span className="text-2xl ml-2">Dispositivos em uso</span>
           </button>
 
-          <div className="w-4/5 lg:w-1/3 mt-4 pb-25">
+          <div className="w-4/5 md:w-5/6 lg:w-2/3 xl:w-1/3 mt-4 pb-25">
             <div className="flex flex-row justify-between mt-4 mb-4">
               <button
                 className={`${
                   cardToRender === 'emprestimo'
                     ? 'border-b-2 border-b-[#FA7901] text-black'
-                    : 'bg-white text-[#c4c4c4]'
+                    : 'text-[#c4c4c4]'
                 } text-md font-semibold`}
                 onClick={() => {
                   setCardToRender('emprestimo');
@@ -147,7 +149,7 @@ const Home = () => {
                 className={`${
                   cardToRender === 'patrimonio'
                     ? 'border-b-2 border-b-[#55D2D9] text-black'
-                    : 'bg-white text-[#c4c4c4]'
+                    : 'text-[#c4c4c4]'
                 } text-md font-semibold`}
                 onClick={() => {
                   setCardToRender('patrimonio');
@@ -157,6 +159,11 @@ const Home = () => {
               </button>
             </div>
 
+            {cardToRender == 'emprestimo' ? (
+              <EmprestimoCard list={emprestimoList} />
+            ) : (
+              <PatrimonioCard list={patrimonioList} />
+            )}
             {cardToRender == 'emprestimo' ? (
               <EmprestimoCard list={emprestimoList} />
             ) : (

@@ -53,7 +53,7 @@ const Cadastro = () => {
       <div className="w-full pt-4 pl-4">
         <Arrow size={35} />
       </div>
-      <div className="w-4/5 md:w-1/2 lg:w-1/3 flex flex-col items-center">
+      <div className="w-4/5 md:w-1/2 lg:w-1/3 flex flex-col items-center pb-24">
         <div className="flex flex-row justify-between w-full mt-10">
           <p className="mt-3 text-3xl">Relatorios</p>
           <button

@@ -30,19 +30,20 @@ const Ativos = () => {
     <>
       <SuccessModal
         message={
-          'A entrega do ativo já foi computada no sistema e ele não está maislistado na lista de empréstimos da instituição.'
+          'O ativo acaba de ser adicionado a plataforma e está pronto para ser emprestado a algum aluno  e/ou colaborador da instituição.'
         }
         closeModal={() => setCongrats(false)}
         isOpened={congrats}
       />
 
-      <Layout title="Cadastro de ativo" className="bg-white flex flex-col items-center">
+      <Layout
+        title="Cadastro de ativo"
+        className="bg-white flex flex-col items-center"
+      >
         <div className="w-full pt-4 pl-4">
           <Arrow size={35} />
           <div className="w-full flex flex-row justify-center">
-            <p className="font-bold pt-[2rem] text-xl">
-              Cadastro de Ativo
-            </p>
+            <p className="font-bold pt-[2rem] text-xl">Cadastro de Ativo</p>
           </div>
         </div>
         <div className="w-4/5 lg:w-1/3 flex flex-col items-center">
