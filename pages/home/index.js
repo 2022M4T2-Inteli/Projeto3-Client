@@ -6,7 +6,7 @@ import { BeaconSchoolLogo } from '@assets/BeaconSchoolLogo';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Card } from '@components/Card';
-import { HomeFooter } from 'components/Footer';
+import { Footer } from 'components/Footer';
 
 export const EmprestimoCard = ({ list }) => {
   return list.map((emprestimo) => {
@@ -160,21 +160,11 @@ const Home = () => {
             ) : (
               <PatrimonioCard list={patrimonioList} />
             )}
-            {cardToRender == 'emprestimo' ? (
-              <EmprestimoCard list={emprestimoList} />
-            ) : (
-              <PatrimonioCard list={patrimonioList} />
-            )}
-            {cardToRender == 'emprestimo' ? (
-              <EmprestimoCard list={emprestimoList} />
-            ) : (
-              <PatrimonioCard list={patrimonioList} />
-            )}
           </div>
         </div>
 
         {/* Footer */}
-        <HomeFooter />
+        <Footer selected="home" />
       </div>
     </Layout>
   );

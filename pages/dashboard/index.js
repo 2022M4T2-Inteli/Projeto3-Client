@@ -9,6 +9,7 @@ import {
   Bar,
   BarChart,
 } from 'recharts';
+import { Footer } from 'components/Footer';
 
 export const Dashboard = () => {
   const data = [
@@ -45,7 +46,7 @@ export const Dashboard = () => {
             placeholder="Procure dispositivo..."
           />
         </div>
-        <div className="w-full flex flex-col justify-center pt-5 shadow-lg border-2 border-red-500">
+        <div className="w-full flex flex-col justify-center pt-5 shadow-lg mt-8">
           <BarChart
             width={450}
             height={300}
@@ -70,6 +71,8 @@ export const Dashboard = () => {
           </BarChart>
         </div>
       </div>
+
+      <Footer selected={'dashboards'} />
     </Layout>
   );
 };

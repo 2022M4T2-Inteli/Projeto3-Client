@@ -5,6 +5,7 @@ import { Profile } from '@assets/Profile';
 import { DocumentCard } from '@components/Card';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { Footer } from 'components/Footer';
 
 const Cadastro = () => {
   let allCollaborators = [
@@ -52,14 +53,14 @@ const Cadastro = () => {
       </div>
       <div className="w-4/5 md:w-1/2 lg:w-1/3 flex flex-col items-center">
         <div className="flex flex-row justify-between w-full mt-10">
-          <p className="mt-3 text-3xl">Funcionários</p>
+          <p className="mt-3 text-3xl">Relatorios</p>
           <button
             className="bg-[#55d2d9] text-[#fff] rounded-full px-4 py-1  hover:bg-[#55d2d9] font-bold transition duration-300 text-lg"
             onClick={() => {
-              router.push('/cadastro/adicionar');
+              router.push('/relatorios/criar');
             }}
           >
-            Cadastrar +
+            gerar +
           </button>
         </div>
 
@@ -93,8 +94,7 @@ const Cadastro = () => {
         </div>
 
         <div className="flex flex-row justify-between w-full px-4">
-          <p>Nome</p>
-          <p>Cadastro</p>
+          <p className="font-bold text-1xl">Relatorios Gerados</p>
         </div>
 
         <hr className="mb-4 bg-[#55D2D9] w-full p-[0.075rem]" />
@@ -103,6 +103,8 @@ const Cadastro = () => {
           <DocumentCard {...collaborator} key={collaborator.name} />
         ))}
       </div>
+
+      <Footer selected={'relatorios'} />
     </Layout>
   );
 };

@@ -8,7 +8,7 @@ export const Layout = ({ title, children, className }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={`h-full w-full min-h-screen ${className}`}>{children}</main>
+      <main className={`h-full w-full min-h-screen bg-[#F5F9FD] ${className}`}>{children}</main>
     </div>
   );
 };
