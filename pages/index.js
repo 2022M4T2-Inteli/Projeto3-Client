@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <Layout>
       <div className="flex flex-1 flex-col justify-evenly text-center h-screen w-screen">
-        <p>Projeto 4 - Beacon School - IOBee</p>
+        <p>Projeto 4 Grupo 3 - Beacon School - IOBee</p>
       </div>
     </Layout>
   );
