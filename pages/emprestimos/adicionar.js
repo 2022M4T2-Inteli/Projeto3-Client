@@ -1,3 +1,5 @@
+// Página de adicionar empréstimo
+
 import { Layout } from '@components/Layout';
 import { Arrow } from '@assets/Arrow';
 import { Input } from '@components/Input';

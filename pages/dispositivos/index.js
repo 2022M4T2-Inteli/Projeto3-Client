@@ -1,3 +1,5 @@
+// Página de dispositivos
+
 import { Layout } from '@components/Layout';
 import { Arrow } from '@assets/Arrow';
 import { Footer } from '@components/Footer';

@@ -1,3 +1,5 @@
+// Home screen - index.js
+
 import { Arrow } from '@assets/Arrow';
 import { ProfileMais } from '@assets/ProfileMais';
 import { Layout } from '@components/Layout';
@@ -8,7 +10,7 @@ import { useState } from 'react';
 import { Card } from '@components/Card';
 import { Footer } from 'components/Footer';
 
-export const EmprestimoCard = ({ list }) => {
+const EmprestimoCard = ({ list }) => {
   return list.map((emprestimo) => {
     return (
       <div className="w-full" key={emprestimo.name}>
@@ -18,7 +20,7 @@ export const EmprestimoCard = ({ list }) => {
   });
 };
 
-export const PatrimonioCard = ({ list }) => {
+const PatrimonioCard = ({ list }) => {
   return list.map((patrimonio) => {
     return (
       <div className="w-full" key={patrimonio.id}>

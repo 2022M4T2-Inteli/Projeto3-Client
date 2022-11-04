@@ -1,3 +1,5 @@
+// Componentes de card (a serem mergeados) utilizados em diversas telas
+
 import { Profile } from '@assets/Profile';
 import { Out } from '@assets/Out';
 import { In } from '@assets/In';

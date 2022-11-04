@@ -1,3 +1,5 @@
+// Componentes de Modal (a serem mergeados) utilizados em diversas telas
+
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Button } from './Button';

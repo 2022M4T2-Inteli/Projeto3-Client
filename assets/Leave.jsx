@@ -1,3 +1,5 @@
+// Ícone de saída
+
 export const Leave = (props) => {
   return (
     <svg

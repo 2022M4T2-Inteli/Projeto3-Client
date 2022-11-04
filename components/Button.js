@@ -1,3 +1,5 @@
+// Componente de Botão utilizado em diversas telas
+
 export const Button = (props) => {
   let { children, className, bgColor, bgHoverColor, rounded, textColor, type, onClick } =
     props;

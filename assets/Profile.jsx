@@ -1,3 +1,5 @@
+// Ícone de perfil para cada usuário
+
 export const Profile = (props) => {
   const generateRandomHexColor = () => {
     //generate only vibrant colors

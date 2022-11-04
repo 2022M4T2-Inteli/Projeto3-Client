@@ -1,3 +1,5 @@
+// Ícone de saída (empréstimo)
+
 export const Out = (props) => {
   return (
     <svg

@@ -1,3 +1,5 @@
+// Ícone de atividade do sensor - saudável
+
 export const ShieldDone = (props) => {
   return (
     <svg

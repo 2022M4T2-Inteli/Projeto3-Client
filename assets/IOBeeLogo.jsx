@@ -1,3 +1,5 @@
+// Logo do grupo IOBee
+
 export const IOBeeLogo = (props) => {
   return (
     <svg

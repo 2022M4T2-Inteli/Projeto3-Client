@@ -1,3 +1,5 @@
+// Página de verificação de email - login
+
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Layout } from '@components/Layout';

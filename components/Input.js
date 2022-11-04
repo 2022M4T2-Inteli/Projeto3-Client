@@ -1,3 +1,5 @@
+// Componente de Input utilizado em diversas telas
+
 export const Input = (props) => {
   const { title, type, placeholder, className } = props;
 

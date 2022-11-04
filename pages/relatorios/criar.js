@@ -1,3 +1,5 @@
+// Página de adicionar relatório
+
 import { Arrow } from '@assets/Arrow';
 import { Layout } from '@components/Layout';
 import { Input } from '@components/Input';

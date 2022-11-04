@@ -1,3 +1,5 @@
+// Base do layout de todas as telas
+
 import Head from "next/head";
 
 export const Layout = ({ title, children, className }) => {

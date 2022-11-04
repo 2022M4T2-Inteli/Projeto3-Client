@@ -1,3 +1,5 @@
+// Ícone de entrada
+
 export const In = (props) => {
   return (
     <svg

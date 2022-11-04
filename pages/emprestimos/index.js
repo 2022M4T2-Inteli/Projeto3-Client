@@ -1,3 +1,5 @@
+// Página de empréstimos
+
 import { Arrow } from '@assets/Arrow';
 import { Footer } from 'components/Footer';
 

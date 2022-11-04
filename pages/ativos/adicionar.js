@@ -1,3 +1,5 @@
+// Página de adicionar ativos
+
 import { Arrow } from '@assets/Arrow';
 import { Layout } from '@components/Layout';
 import { Input } from '@components/Input';
@@ -6,36 +8,6 @@ import { useState } from 'react';
 import { Button } from '@components/Button';
 import { useRouter } from 'next/router';
 import { SuccessModal } from 'components/Modal';
-
-export const Modal = ({ closeModal, congrats, setCongrats, device }) => {
-  const router = useRouter();
-
-  return congrats ? (
-    <div
-      className="fixed z-50 inset-0 overflow-y-auto transition-opacity top-0 left-0 w-full h-full bg-opacity-50"
-      style={{
-        backgroundColor: 'rgba(0, 0, 0, 0.2)',
-      }}
-    >
-      <div className="z-100 absolute modal-content bg-white w-full rounded-t-2xl shadow-lg py-8 px-6 h-fit bottom-0 text-center">
-        <p className="text-xl font-bold mt-4 mb-8">Sucesso! 🎉</p>
-        <p className="text-center font-light mb-8">
-          O empréstimo já está cadastrado no sistema, e quando a data de
-          devolução se aproximar, você será avisado.
-        </p>
-
-        <div className="flex flex-col mx-auto w-full">
-          <button
-            className="text-[#55d2d9] w-4/5 lg:w-1/3 rounded-xl font-bold mx-auto"
-            onClick={() => router.push('/ativos')}
-          >
-            Continuar
-          </button>
-        </div>
-      </div>
-    </div>
-  ) : null;
-};
 
 const Ativos = () => {
   const {

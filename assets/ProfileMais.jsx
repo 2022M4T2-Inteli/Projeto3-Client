@@ -1,3 +1,5 @@
+// Ícone de adição de perfil
+
 export const ProfileMais = (props) => {
   return (
     <svg

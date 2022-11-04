@@ -1,3 +1,5 @@
+// Logo da escola Beacon School
+
 export const BeaconSchoolLogo = (props) => {
   return (
     <svg

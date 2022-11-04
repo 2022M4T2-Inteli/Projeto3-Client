@@ -1,3 +1,5 @@
+// Index (não utilizada) - Redireciona para a login
+
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Layout } from '@components/Layout';

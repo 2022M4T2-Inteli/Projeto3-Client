@@ -1,3 +1,5 @@
+// Página de relatórios
+
 import { Layout } from '@components/Layout';
 import { Arrow } from '@assets/Arrow';
 import { Button } from '@components/Button';

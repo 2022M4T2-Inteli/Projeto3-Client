@@ -1,3 +1,5 @@
+// Componente de Footer utilizado em diversas telas
+
 import Link from "next/link";
 import { Chart } from "/assets/footer/Chart";
 import { Devices } from "/assets/footer/Devices";

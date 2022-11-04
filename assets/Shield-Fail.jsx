@@ -1,3 +1,5 @@
+// Ícone de atividade do sensor - manutenção
+
 export const ShieldFail = (props) => {
   return (
     <svg

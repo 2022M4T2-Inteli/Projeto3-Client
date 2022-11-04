@@ -1,3 +1,5 @@
+// Ícone de download
+
 export const Download = (props) => {
   return (
     <svg

@@ -1,5 +1,4 @@
-// Seta utilizada
-
+// Seta utilizada para voltar à página anterior
 import { useRouter } from "next/router";
 
 export const Arrow = (props) => {
