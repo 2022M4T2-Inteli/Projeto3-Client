@@ -21,11 +21,10 @@ const Adicionar = () => {
           className="w-full flex flex-col items-center"
           onSubmit={handleSubmit((data) => {
             setData(JSON.stringify(data));
-            console.log(data);
           })}
         >
           <div>
-            <p className="font-bold text-xl my-8">Cadastro de Funcionários</p>
+            <p className="font-bold text-lg lg:text-xl my-8">Cadastro de Funcionários</p>
           </div>
 
           {/* Inputs */}

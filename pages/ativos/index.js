@@ -5,64 +5,26 @@ import { Arrow } from '@assets/Arrow';
 import { Button } from '@components/Button';
 import { Profile } from '@assets/Profile';
 import { DeviceCard } from '@components/Card';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { EmprestimoModal } from '@components/Modal';
 import { Footer } from 'components/Footer';
 
-const Ativos = () => {
-  let devices = [
-    {
-      id: 8746836,
-      device: 'Macbook Air',
-      who: 'Ana Clara Almeida',
-      date: '09/2022',
-      status: 'Diário',
-      isIn: true,
-    },
-    {
-      id: 8132468,
-      device: 'IPad V8',
-      who: 'Mariana Gomes',
-      date: '09/2022',
-      status: 'Mensal',
-      isOut: true,
-    },
-    {
-      id: 8746146,
-      device: 'Apple Pencil',
-      who: 'Bianca Barbosa',
-      date: '08/2022',
-      status: 'Mensal',
-      isOut: true,
-    },
-    {
-      id: 8746831,
-      device: 'Dell Vostro 2480',
-      who: 'Amanda Ribeiro',
-      date: '09/2022',
-      status: 'Diário',
-      isIn: true,
-    },
-    {
-      id: 8746832,
-      device: 'Dell Vostro 2480',
-      who: 'Amanda Ribeiro',
-      date: '09/2022',
-      status: 'Diário',
-      isIn: true,
-    },
-    {
-      id: 8746833,
-      device: 'Dell Vostro 2480',
-      who: 'Amanda Ribeiro',
-      date: '09/2022',
-      status: 'Diário',
-      isIn: true,
-    },
-  ];
+import axios from '@utils/axios';
 
-  const [allDevices, setAllDevices] = useState(devices);
+const Ativos = () => {
+  const getDevices = async () => {
+    const response = await axios.get('/api/devices');
+    setDevices(response.data);
+
+    return response.data;
+  };
+
+  const [devices, setDevices] = useState([]);
+
+  useEffect(() => {
+    getDevices();
+  }, []);
 
   const [modalOpened, setModalOpened] = useState(false);
   const [modalDevice, setModalDevice] = useState({});
@@ -95,7 +57,7 @@ const Ativos = () => {
           <div className="flex flex-row justify-between w-full mt-10">
             <p className="mt-3 text-3xl">Ativos</p>
             <button
-              className="bg-[#55d2d9] text-[#fff] rounded-full px-4 py-1  hover:bg-[#55d2d9] font-bold transition duration-300 text-lg"
+              className="bg-[#55d2d9] text-[#fff] rounded-full px-4 py-1  hover:bg-[#55d2d9] font-bold transition duration-300 text-md lg:text-lg"
               onClick={() => {
                 router.push('/ativos/adicionar');
               }}
@@ -140,17 +102,23 @@ const Ativos = () => {
 
           <hr className="mb-4 bg-[#55D2D9] w-full p-[0.075rem]" />
 
-          {allDevices.map((device) => (
-            <div
-              className="w-full cursor-pointer mb-2"
-              key={device.name}
-              onClick={() => {
-                toggleModal(device);
-              }}
-            >
-              <DeviceCard {...device} />
+          {devices && devices.length > 0 ? (
+            devices.map((device) => (
+              <div
+                className="w-full cursor-pointer mb-2"
+                key={device.identifier}
+                onClick={() => {
+                  toggleModal(device);
+                }}
+              >
+                <DeviceCard {...device} />
+              </div>
+            ))
+          ) : (
+            <div className="w-full cursor-pointer mb-2">
+              <p>Nada por enquanto!</p>
             </div>
-          ))}
+          )}
         </div>
 
         <Footer selected="ativos" />

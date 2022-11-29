@@ -137,7 +137,7 @@ const Home = () => {
                   cardToRender === 'emprestimo'
                     ? 'border-b-2 border-b-[#FA7901] text-black'
                     : 'text-[#c4c4c4]'
-                } text-md font-semibold`}
+                } text-sm font-semibold`}
                 onClick={() => {
                   setCardToRender('emprestimo');
                 }}
@@ -150,7 +150,7 @@ const Home = () => {
                   cardToRender === 'patrimonio'
                     ? 'border-b-2 border-b-[#55D2D9] text-black'
                     : 'text-[#c4c4c4]'
-                } text-md font-semibold`}
+                } text-sm lg:text-md font-semibold`}
                 onClick={() => {
                   setCardToRender('patrimonio');
                 }}
@@ -159,15 +159,10 @@ const Home = () => {
               </button>
             </div>
 
-            {cardToRender == 'emprestimo' ? (
-              <EmprestimoCard list={emprestimoList} />
+            {cardToRender == 'emprestimo' ? (              
+              <EmprestimoCard list={emprestimoList.slice(0,3)} />
             ) : (
-              <PatrimonioCard list={patrimonioList} />
-            )}
-            {cardToRender == 'emprestimo' ? (
-              <EmprestimoCard list={emprestimoList} />
-            ) : (
-              <PatrimonioCard list={patrimonioList} />
+              <PatrimonioCard list={patrimonioList.slice(0,3)} />
             )}
           </div>
         </div>

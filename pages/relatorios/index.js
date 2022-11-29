@@ -57,7 +57,7 @@ const Cadastro = () => {
         <div className="flex flex-row justify-between w-full mt-10">
           <p className="mt-3 text-3xl">Relatorios</p>
           <button
-            className="bg-[#55d2d9] text-[#fff] rounded-full px-4 py-1  hover:bg-[#55d2d9] font-bold transition duration-300 text-lg"
+            className="bg-[#55d2d9] text-[#fff] rounded-full px-4 py-1  hover:bg-[#55d2d9] font-bold transition duration-300 text-md lg:text-lg"
             onClick={() => {
               router.push('/relatorios/criar');
             }}

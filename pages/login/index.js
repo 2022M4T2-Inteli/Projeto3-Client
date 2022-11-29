@@ -15,7 +15,7 @@ const Login = () => {
       <div className="h-screen flex flex-col justify-center items-center">
         {/* Logo and Text */}
         <div className="flex flex-row items-end justify-between w-4/5 lg:w-1/3 mb-8">
-          <p className="text-xl">
+          <p className="text-lg lg:text-xl">
             Você está em
             <br />
             <span className="text-5xl font-extrabold mt-2">IOBEE</span>
