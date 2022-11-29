@@ -138,7 +138,7 @@ const Emprestimo = () => {
                 </button>
               </div>
               {lendingType == 'diario' ? (
-                console.log('dia')
+                null
               ) : lendingType == 'mensal' ? (
                 <div>
                   <Input

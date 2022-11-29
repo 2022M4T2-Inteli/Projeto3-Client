@@ -86,8 +86,6 @@ export const EmprestimoModal = ({
 }) => {
   const { borrowed, id, identifier, positions } = device;
 
-  console.log(borrowed)
-
   return isOpened ? (
     congrats ? (
       <SuccessModal
