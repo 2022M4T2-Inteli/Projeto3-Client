@@ -8,10 +8,14 @@ export default async function handler(req, res) {
     const { method } = req;
 
     switch (method) {
-        case 'PUT':
+        case 'POST':
 			const { position } = req.body;
 
 			try {
+				if (!position) {
+					return res.status(400).json({ success: false });
+				}
+				
 				const device = await Device.findOne({
 					identifier: identifier,
 				});
