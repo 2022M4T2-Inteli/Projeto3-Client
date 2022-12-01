@@ -13,18 +13,17 @@ import { Footer } from 'components/Footer';
 import axios from '@utils/axios';
 
 const Ativos = () => {
-  const getDevices = async () => {
+  const fetchData = async () => {
     const response = await axios.get('/api/devices');
+    console.log(response)
     setDevices(response.data);
-
-    return response.data;
-  };
-
-  const [devices, setDevices] = useState([]);
+  }
 
   useEffect(() => {
-    getDevices();
+    fetchData();
   }, []);
+
+  const [devices, setDevices] = useState([]);
 
   const [modalOpened, setModalOpened] = useState(false);
   const [modalDevice, setModalDevice] = useState({});

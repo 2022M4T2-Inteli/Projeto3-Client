@@ -4,8 +4,10 @@ import { Layout } from '@components/Layout';
 import { Arrow } from '@assets/Arrow';
 import { Footer } from '@components/Footer';
 import { TagCard } from 'components/Card';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TagModal } from 'components/Modal';
+
+import axios from '@utils/axios'
 
 export const Dispositivos = () => {
   const [sample, setSample] = useState([
@@ -45,7 +47,7 @@ export const Dispositivos = () => {
       date: '07/11',
       observation: '',
     },
-  ]);
+  ]);  
 
   const [modalOpened, setModalOpened] = useState(false);
   const [modalTag, setModalTag] = useState({});
@@ -112,7 +114,6 @@ export const Dispositivos = () => {
           </div>
 
           <hr className="mb-4 bg-[#55D2D9] w-full p-[0.075rem]" />
-
           {sample.map((item) => (
             <TagCard
               key={item.title + item.date}
