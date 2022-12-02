@@ -9,87 +9,136 @@ import { Button } from '@components/Button';
 import { useRouter } from 'next/router';
 import { SuccessModal } from 'components/Modal';
 
+import axios from '@utils/axios';
+
 const Ativos = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+    const router = useRouter();
 
-  const [congrats, setCongrats] = useState(false);
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+    const onSubmit = async (data) => {
+        console.log(data);
 
-  return (
-    <>
-      <SuccessModal
-        message={
-          'O ativo acaba de ser adicionado a plataforma e está pronto para ser emprestado a algum aluno  e/ou colaborador da instituição.'
+        const { device, identifier, price, from } = data;
+
+        try {
+            await axios
+                .post('/api/devices/create', {
+                    device: device,
+                    from: from,
+                    id: identifier,
+                    price: price,
+                })
+                .then(async (res) => {
+                    alert(res.data.message);
+                    await router.push('/ativos');
+                })
+                .catch((err) => {
+                    alert(err, 'Erro ao cadastrar ativo');
+                });
+        } catch (error) {
+            console.error(error);
         }
-        closeModal={() => setCongrats(false)}
-        isOpened={congrats}
-      />
+    };
 
-      <Layout
-        title="Cadastro de ativo"
-        className="bg-white flex flex-col items-center"
-      >
-        <div className="w-full pt-4 pl-4">
-          <Arrow size={35} />
-          <div className="w-full flex flex-row justify-center">
-            <p className="font-bold pt-[2rem] text-lg lg:text-xl">
-              Cadastro de Ativo
-            </p>
-          </div>
-        </div>
-        <div className="w-4/5 lg:w-1/3 flex flex-col items-center">
-          <form
-            className="w-full flex flex-col items-center"
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            {/* Inputs */}
-            <div className="w-full pt-[3rem] mb-8">
-              <Input
-                type={'text'}
-                title={'Nome do dispositivo:'}
-                placeholder={'Macbook Air 2020'}
-                register={register('name')}
-              />
+    const [congrats, setCongrats] = useState(false);
 
-              <Input
-                type={'text'}
-                title={'Campus:'}
-                placeholder={'Villa'}
-                register={register('campus')}
-              />
-
-              <Input
-                type={'text'}
-                title={'Identificador:'}
-                placeholder={'MB-45'}
-                register={register('identifier')}
-              />
-
-              <Input
-                type={'number'}
-                title={'Preço:'}
-                placeholder={'R$ 2.000,00'}
-                min={0}
-                max={100000}
-                register={register('price')}
-              />
-            </div>
-
-            <input
-              type="submit"
-              value={'Cadastrar'}
-              className={'bg-[#f7f7f9] rounded-xl px-4 py-4 w-full shadow-lg'}
+    return (
+        <>
+            <SuccessModal
+                message={
+                    'O ativo acaba de ser adicionado a plataforma e está pronto para ser emprestado a algum aluno  e/ou colaborador da instituição.'
+                }
+                closeModal={() => setCongrats(false)}
+                isOpened={congrats}
             />
-          </form>
-        </div>
-      </Layout>
-    </>
-  );
+
+            <Layout
+                title="Cadastro de ativo"
+                className="bg-white flex flex-col items-center"
+            >
+                <div className="w-full pt-4 pl-4">
+                    <Arrow size={35} />
+                    <div className="w-full flex flex-row justify-center">
+                        <p className="font-bold pt-[2rem] text-lg lg:text-xl">
+                            Cadastro de Ativo
+                        </p>
+                    </div>
+                </div>
+                <div className="w-4/5 lg:w-1/3 flex flex-col items-center"></div>
+                <div className="w-4/5 lg:w-1/3 flex flex-col items-center">
+                    <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+                        <div className={'p-0 w-full mb-4'}>
+                            <p className="font-bold mb-2">
+                                Nome do Dispositivo:
+                            </p>
+                            <input
+                                type={'text'}
+                                className="bg-[#f7f7f9] rounded-xl px-4 py-4 w-full shadow-lg"
+                                title={'Nome do dispositiov :'}
+                                placeholder={'Dell Vostro 4500'}
+                                {...register('device', { required: true })}
+                            />
+                            <span className="text-red-500">
+                                {errors.name && 'Nome é obrigatório'}
+                            </span>
+                        </div>
+                        <div className={'p-0 w-full mb-4'}>
+                            <p className="font-bold mb-2">Campus:</p>
+                            <input
+                                type={'text'}
+                                className="bg-[#f7f7f9] rounded-xl px-4 py-4 w-full shadow-lg"
+                                title={'Campus :'}
+                                placeholder={'Nome do campus'}
+                                {...register('from', { required: true })}
+                            />
+                            <span className="text-red-500">
+                                {errors.localDevice && 'Campus é obrigatório'}
+                            </span>
+                        </div>
+                        <div className={'p-0 w-full mb-4'}>
+                            <p className="font-bold mb-2">Nº de patrimônio:</p>
+                            <input
+                                type={'text'}
+                                className="bg-[#f7f7f9] rounded-xl px-4 py-4 w-full shadow-lg"
+                                placeholder="NB-05"
+                                {...register('identifier', { required: true })}
+                            />
+                            <span className="text-red-500">
+                                {errors.identifier &&
+                                    'Número de patrimônio é obrigatorio'}
+                            </span>
+                        </div>
+
+                        <div className={'p-0 w-full mb-4'}>
+                            <p className="font-bold mb-2">
+                                Valor do dispositivo:
+                            </p>
+                            <input
+                                type="text"
+                                className="bg-[#f7f7f9] rounded-xl px-4 py-4 w-full shadow-lg"
+                                placeholder="R$ 7000,00"
+                                {...register('price', { required: true })}
+                            />
+                            <span className="text-red-500">
+                                {errors.price && 'Data de compra é obrigatória'}
+                            </span>
+                        </div>
+
+                        <input
+                            type="submit"
+                            className="bg-blue-500 rounded-xl mt-4 text-white cursor-pointer px-4 py-4 w-full shadow-lg"
+                            value="Cadastrar"
+                        />
+                    </form>
+                </div>
+            </Layout>
+        </>
+    );
 };
 
 export default Ativos;

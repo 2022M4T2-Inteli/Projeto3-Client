@@ -8,21 +8,21 @@ import { ShieldDone } from '@assets/Shield-Done';
 import { ShieldFail } from '@assets/Shield-Fail';
 import { Location } from 'assets/Location';
 
-export const Card = ({ name, occupation, date, status }) => {
+export const Card = ({ fullName, role, email }) => {
     return (
         <div className="bg-white flex flex-row justify-between w-full px-4 py-6 shadow-lg rounded-lg border border-gray-50 mb-6">
             <div className="my-auto flex flex-row">
                 <Profile width={24} className="my-auto mr-4" />
 
                 <div className="flex flex-col">
-                    <p className="text-sm lg:text-md">{name}</p>
-                    <p className="text-sm opacity-50">{occupation}</p>
+                    <p className="text-sm lg:text-md">{fullName}</p>
+                    <p className="text-sm opacity-50">{email}</p>
                 </div>
             </div>
 
-            <div className="flex flex-col justify-end">
-                <p className="text-sm lg:text-md font-bold">{date}</p>
-                <p className="text-end text-sm opacity-50">{status}</p>
+            <div className="flex flex-col justify-start">
+                <p className="text-sm lg:text-md font-bold">{role}</p>
+                <p className="text-end text-sm opacity-50"> </p>
             </div>
         </div>
     );
@@ -30,6 +30,7 @@ export const Card = ({ name, occupation, date, status }) => {
 
 export const DeviceCard = ({
     device,
+    deviceName,
     borrowed,
     lastUpdate,
     positions,
@@ -39,7 +40,6 @@ export const DeviceCard = ({
     let date;
     if (positions[positions.length - 1]) {
         date = new Date(positions[positions.length - 1].time);
-        console.log(date.toLocaleTimeString() + ' ' + date.toLocaleDateString());
     }
 
     return (
@@ -52,11 +52,14 @@ export const DeviceCard = ({
                 ) : null}
 
                 <div className="flex flex-col">
-                    <p className="text-sm lg:text-md">{device}</p>
+                    <p className="text-sm lg:text-md">{device || deviceName}</p>
                     {positions && positions.length > 0 ? (
                         <p className="text-xs opacity-50">
-                            {positions[positions.length - 1].place}<br/>
-                            {date.toLocaleTimeString() + ' ' + date.toLocaleDateString()}
+                            {positions[positions.length - 1].place}
+                            <br />
+                            {date.toLocaleTimeString() +
+                                ' ' +
+                                date.toLocaleDateString()}
                         </p>
                     ) : (
                         <p className="text-sm opacity-50">Sem localização</p>

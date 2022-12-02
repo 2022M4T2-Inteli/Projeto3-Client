@@ -15,11 +15,9 @@ import axios from '@utils/axios';
 const Ativos = () => {
     const fetchData = async () => {
         const response = await axios.get('/api/devices').then((res) => {
-            console.log(res);
             setLoading(false);
             setDevices(res.data);
         });
-        console.log(response);
     };
 
     useEffect(() => {
