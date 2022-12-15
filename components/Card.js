@@ -8,20 +8,20 @@ import { ShieldDone } from '@assets/Shield-Done';
 import { ShieldFail } from '@assets/Shield-Fail';
 import { Location } from 'assets/Location';
 
-export const Card = ({ fullName, role, email }) => {
+export const Card = ({ fullName, name, role, email, status, date, index }) => {
     return (
-        <div className="bg-white flex flex-row justify-between w-full px-4 py-6 shadow-lg rounded-lg border border-gray-50 mb-6">
+        <div className="bg-white flex flex-row justify-between w-full px-4 py-6 shadow-lg rounded-lg border border-gray-50 mb-6" key={index}>
             <div className="my-auto flex flex-row">
                 <Profile width={24} className="my-auto mr-4" />
 
                 <div className="flex flex-col">
-                    <p className="text-sm lg:text-md">{fullName}</p>
-                    <p className="text-sm opacity-50">{email}</p>
+                    <p className="text-sm lg:text-md">{fullName || name}</p>
+                    <p className="text-sm opacity-50">{email || status}</p>
                 </div>
             </div>
 
             <div className="flex flex-col justify-start">
-                <p className="text-sm lg:text-md font-bold">{role}</p>
+                <p className="text-sm lg:text-md font-bold">{role || date}</p>
                 <p className="text-end text-sm opacity-50"> </p>
             </div>
         </div>

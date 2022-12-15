@@ -6,7 +6,7 @@ const DeviceSchema = new mongoose.Schema({
     deviceName: { type: String, required: true },
     lastUpdate: { type: Date, default: Date.now },
     from: {
-        type: Number,
+        type: String,
         required: true,
     },
     positions: [

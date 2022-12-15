@@ -1,5 +1,4 @@
 // Página de ativos
-
 import { Layout } from '@components/Layout';
 import { Arrow } from '@assets/Arrow';
 import { Button } from '@components/Button';
@@ -9,13 +8,13 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { EmprestimoModal } from '@components/Modal';
 import { Footer } from 'components/Footer';
-
 import axios from '@utils/axios';
 
 const Ativos = () => {
     const fetchData = async () => {
-        const response = await axios.get('/api/devices').then((res) => {
+        await axios.get('/api/devices').then((res) => {
             setLoading(false);
+            console.log(res);
             setDevices(res.data);
         });
     };
@@ -25,6 +24,7 @@ const Ativos = () => {
     }, []);
 
     const [devices, setDevices] = useState([]);
+    const [filteredDevices, setFilteredDevices] = useState([]);
 
     const [modalOpened, setModalOpened] = useState(false);
     const [modalDevice, setModalDevice] = useState({});
@@ -39,7 +39,15 @@ const Ativos = () => {
 
     const router = useRouter();
 
-    const filterCollaborators = (e) => {};
+    const filterDevices = (e) => {
+        const searchValue = e.target.value.toLowerCase();
+
+        const filtered = devices.filter((device) => {
+            return device.deviceName.toLowerCase().includes(searchValue);
+        });
+
+        setFilteredDevices(filtered);
+    };
 
     return (
         <>
@@ -78,7 +86,7 @@ const Ativos = () => {
                             className="w-full pr-10 p-2.5 bg-[#F5F9FD] rounded-2xl px-2 py-4"
                             placeholder="Procure dispositivo..."
                             onChange={(e) => {
-                                filterCollaborators(e);
+                                filterDevices(e);
                             }}
                         />
                         <div className="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
@@ -107,7 +115,19 @@ const Ativos = () => {
 
                     <hr className="mb-4 bg-[#55D2D9] w-full p-[0.075rem]" />
 
-                    {loading ? (
+                    {filteredDevices && filteredDevices.length > 0 ? (
+                        filteredDevices.map((device) => (
+                            <div
+                                className="w-full cursor-pointer mb-2"
+                                key={device.identifier}
+                                onClick={() => {
+                                    toggleModal(device);
+                                }}
+                            >
+                                <DeviceCard {...device} />
+                            </div>
+                        ))
+                    ) : loading ? (
                         <div className="flex flex-col items-center justify-center w-full h-96">
                             <p className="text-2xl">Carregando...</p>
                         </div>

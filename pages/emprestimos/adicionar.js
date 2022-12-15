@@ -4,30 +4,61 @@ import { Arrow } from '@assets/Arrow';
 import { Layout } from '@components/Layout';
 import { Input } from '@components/Input';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@components/Button';
 import { SuccessModal } from 'components/Modal';
 
 import axios from '@utils/axios';
+import { Select } from 'components/Select';
+import { useRouter } from 'next/router';
 
 const Emprestimo = () => {
+    const router = useRouter();
+
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const [data, setData] = useState('');
 
-    const [lendingType, setLendingType] = useState('');
+    const [devices, setDevices] = useState([]);
 
-    const [dailyButtonState, setDailyButtonState] = useState(false);
-    const [monthlyButtonState, setMonthlyButtonState] = useState(false);
+    const getDevices = async () =>
+        await axios.get('/api/devices').then((res) => {
+            console.log(res);
+            setDevices(res.data);
+        });
+
+    useEffect(() => {
+        getDevices();
+    }, []);
 
     const [congrats, setCongrats] = useState(false);
 
-    const onSubmit = (data) => {
-        setData(data);
-        setCongrats(true);
+    const onSubmit = async (data) => {
+        const { name, ativo, campus, dataRetirada, dataDev } = data;
+
+        try {
+            axios
+                .put(`/api/devices/${ativo}/lend`, {
+                    id: ativo,
+                    name: name,
+                    since: dataRetirada,
+                    until: dataDev,
+                    isStudent: true,
+                    isEmployee: false,
+                    canTakeHome: true,
+                })
+                .then((res) => {
+                    console.log(res);
+                    router.push('/emprestimos');
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+        } catch (err) {
+            alert(err, 'Erro ao cadastrar ativo');
+        }
     };
 
     return (
@@ -59,50 +90,60 @@ const Emprestimo = () => {
                     >
                         {/* Inputs */}
                         <div className="w-full pt-[3rem] mb-8">
-                            <Input
+                            <p className="font-bold mb-2">
+                                Nome completo de quem pegará o dispositivo:
+                            </p>
+                            <input
+                                className={`bg-[#f7f7f9] rounded-xl px-4 py-4 w-full shadow-lg`}
                                 type={'text'}
-                                title={'Nome Completo :'}
-                                placeholder={'Seu nome completo'}
+                                placeholder={
+                                    'Nome completo de quem pegará o dispositivo'
+                                }
                                 {...register('name', { required: true })}
                             />
-                            {errors.fullName && (
+                            {errors.name && (
+                                <p className="text-red-500 text-sm">
+                                    Este campo é obrigatório
+                                </p>
+                            )}
+
+                            <p className="font-bold text-md lg:text-lg mt-4 mb-2">
+                                {' '}
+                                Ativo:
+                            </p>
+                            <select
+                                className={`bg-[#f7f7f9] rounded-xl p-4 w-full mb-4 shadow-lg`}
+                                title={'Ativo :'}
+                                placeholder="Selecione o ativo"
+                                {...register('ativo', { required: true })}
+                            >
+                                {/* <option>Selecione o ativo</option> */}
+                                {devices.map((device) => (
+                                    <option
+                                        key={device.identifier}
+                                        value={device.identifier}
+                                        className="text-gray-500"
+                                    >
+                                        {device.deviceName}
+                                    </option>
+                                ))}
+                            </select>
+                            {errors.ativo && (
                                 <span className="text-red-500">
-                                    Insira seu nome completo
+                                    Selecione o ativo
                                 </span>
                             )}
 
-                            <Input
-                                type={'email'}
-                                title={'E-mail Institucional :'}
-                                placeholder={'email@beacon.edu.br'}
-                                {...register('email', {
-                                    required: true,
-                                    pattern: /^\S+@\S+$/i,
-                                })}
-                            />
-                            {errors.email && (
-                                <span className="text-red-500">
-                                    Insira seu e-mail institucional
-                                </span>
-                            )}
-
-                            <Input
-                                type={'text'}
-                                title={'Dispositivo :'}
-                                placeholder={'Apple Pencil'}
-                                {...register('device', { required: true })}
-                            />
-                            {errors.device && (
-                                <span className="text-red-500">
-                                    Insira o dispositivo
-                                </span>
-                            )}
-
-                            <Input
+                            <p className="font-bold text-md lg:text-lg mt-4 mb-2">
+                                {' '}
+                                Campus
+                            </p>
+                            <input
                                 type={'text'}
                                 title={'Campus :'}
                                 placeholder={'Villa'}
                                 {...register('campus', { required: true })}
+                                className={`bg-[#f7f7f9] rounded-xl px-4 py-4 w-full shadow-lg`}
                             />
                             {errors.campus && (
                                 <span className="text-red-500">
@@ -110,72 +151,51 @@ const Emprestimo = () => {
                                 </span>
                             )}
 
-                            <p className="font-bold text-md lg:text-lg mb-3">
-                                {' '}
-                                Tipo:
+                            <p className="font-bold text-md lg:text-lg mt-4 mb-2">
+                                Data de retirada:
                             </p>
+                            <input
+                                type={'date'}
+                                className={`bg-[#f7f7f9] rounded-xl px-4 py-4 w-full shadow-lg`}
+                                title={'Data de retirada :'}
+                                placeholder={'00/00/00'}
+                                {...register('dataRetirada', {
+                                    required: true,
+                                })}
+                            />
+                            {errors.dataRetirada && (
+                                <span className="text-red-500">
+                                    Insira a data de retirada
+                                </span>
+                            )}
 
-                            <div className="flex flex-row mb-2">
-                                <button
-                                    className={
-                                        dailyButtonState === false
-                                            ? 'bg-[#bfbfbf] text-[#fff] w-full rounded-xl p-4 hover:bg-[#FA7901] font-bold transition duration-300 mr-2'
-                                            : 'bg-[#FA7901] text-[#fff] w-full rounded-xl p-4 hover:bg-[#FA7901] font-bold transition duration-300 mr-2'
-                                    }
-                                    onClick={() => {
-                                        setLendingType('diario');
-                                        setDailyButtonState(true);
-                                        setMonthlyButtonState(false);
-                                    }}
-                                >
-                                    Diário
-                                </button>
-
-                                <button
-                                    className={
-                                        monthlyButtonState === false
-                                            ? 'bg-[#bfbfbf] text-[#fff] w-full rounded-xl p-4 hover:bg-[#FA7901] font-bold transition duration-300'
-                                            : 'bg-[#FA7901] text-[#fff] w-full rounded-xl p-4 hover:bg-[#FA7901] font-bold transition duration-300'
-                                    }
-                                    onClick={() => {
-                                        setLendingType('mensal');
-                                        setMonthlyButtonState(true);
-                                        setDailyButtonState(false);
-                                    }}
-                                >
-                                    Mensal
-                                </button>
-                            </div>
-                            {lendingType == 'diario' ? null : lendingType ==
-                              'mensal' ? (
-                                <div>
-                                    <Input
-                                        type={'data'}
-                                        title={'data de retirada :'}
-                                        placeholder={'00/00/00'}
-                                        {...register('dataRetirada', {
-                                            required: true,
-                                        })}
-                                    />
-                                    <Input
-                                        type={'data'}
-                                        title={'data de devolução :'}
-                                        placeholder={'00/00/00'}
-                                        {...register('dataDev', {
-                                            required: true,
-                                        })}
-                                    />
-                                </div>
-                            ) : null}
+                            <p className="font-bold text-md lg:text-lg mt-4 mb-2">
+                                Data de devolução:
+                            </p>
+                            <input
+                                className={`bg-[#f7f7f9] rounded-xl px-4 py-4 w-full shadow-lg`}
+                                type={'date'}
+                                title={'Data de devolução :'}
+                                placeholder={'00/00/00'}
+                                {...register('dataDev', {
+                                    required: true,
+                                })}
+                            />
+                            {errors.dataDev && (
+                                <span className="text-red-500">
+                                    Insira a data de devolução
+                                </span>
+                            )}
                         </div>
+
+                        <Button
+                            className={'mb-7'}
+                            type={'submit'}
+                            title={'Cadastrar'}
+                        >
+                            Cadastrar
+                        </Button>
                     </form>
-                    <Button
-                        className={'mb-7'}
-                        type={'submit'}
-                        title={'Cadastrar'}
-                    >
-                        Cadastrar
-                    </Button>
                 </div>
             </Layout>
         </>

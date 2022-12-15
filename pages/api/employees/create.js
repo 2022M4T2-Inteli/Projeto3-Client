@@ -7,12 +7,17 @@ export default async function handler(req, res) {
     const { method } = req;
 
     if (method == 'POST') {
-        const { fullName, email, cpf, role } = req.body;
+        const {
+            fullName,
+            email,
+            cpf,
+            role
+        } = req.body;
 
         try {
             const allEmployees = await Employee.find({});
 
-            if (!allEmployees.some((employee) => employee.cpf === cpf)) {
+            if (!allEmployees.some( employee => employee.cpf === cpf)) {
                 await Employee.create({
                     fullName: fullName,
                     email: email,
