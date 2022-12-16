@@ -9,10 +9,7 @@ export default async function handler(req, res) {
 
     const { token } = req.body;
 
-    if (
-        token !==
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJCZWFjb24iLCJuYW1lIjoiSW9iZWUiLCJpYXQiOjE1MTYyMzkwMjJ9.NAvw01_oCd9VVD6-VH5uVpd4BQ-GJYq4dBhR8bUY5RM'
-    ) {
+    if (token !== process.env.JWT_SECRET) {
         return res.status(401).json({ message: 'Not authorized' });
     }
 
