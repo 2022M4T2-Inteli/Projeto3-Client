@@ -2,18 +2,13 @@ import dbConnect from '@lib/dbConnect';
 import Device from '@models/Device';
 
 export default async function handler(req, res) {
-
     const { token } = req.body;
     const { method } = req;
 
     switch (method) {
         case 'POST':
             try {
-                if (
-                    token &&
-                    token ==
-                        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJCZWFjb24iLCJuYW1lIjoiSW9iZWUiLCJpYXQiOjE1MTYyMzkwMjJ9.NAvw01_oCd9VVD6-VH5uVpd4BQ-GJYq4dBhR8bUY5RM'
-                ) {
+                if (token && token == process.env.JWT_SECRET) {
                     res.send({
                         message: 'Token is valid',
                         authorized: true,

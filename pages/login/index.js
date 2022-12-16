@@ -30,7 +30,7 @@ const Login = () => {
                         email: data.email,
                     })
                     .then((res) => {
-                        localStorage.setItem('email', data.email);
+                        // localStorage.setItem('email', data.email);
                         router.push('/login/verification');
                     })
                     .catch((err) => {

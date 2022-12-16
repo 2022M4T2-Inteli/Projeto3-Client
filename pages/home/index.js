@@ -100,7 +100,7 @@ const Home = () => {
                             <Leave
                                 className={'cursor-pointer'}
                                 onClick={() => {
-                                    localStorage.removeItem('email');
+                                    // localStorage.removeItem('email');
                                     router.push('/login');
                                 }}
                             />

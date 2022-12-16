@@ -59,9 +59,9 @@ const Verification = () => {
                                 para o email cadastrado
                                 <br />
                             </p>
-                            <p className="mt-2 font-bold">
-                                {localStorage.getItem('email') || 'Seu email'}
-                            </p>
+                            {/* <p className="mt-2 font-bold"> */}
+                            {/* {localStorage.getItem('email') || 'Seu email'} */}
+                            {/* </p> */}
                         </div>
 
                         <form
