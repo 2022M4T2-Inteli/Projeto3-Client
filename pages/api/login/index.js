@@ -31,35 +31,36 @@ export default async function handler(req, res) {
 
     switch (method) {
         case 'POST':
+            const employees = await Employees.find({});
+            console.log(employees);
+
             try {
-                const employees = await Employees.find({});
-
                 // check if email exists in any of the employees
-                if (employees.some((employee) => employee.email === email)) {
-                    if (email) {
-                        try {
-                            await transporter.sendMail({
-                                text: 'Texto do Email',
-                                subject: 'Admin Token - Validade',
-                                from: 'Noreply InteliBlockChain<noreply@InteliBlockChain.com>',
-                                to: `${email}`,
-                                html: `<p>Seu token de acesso é: <br/>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.JLQEgIIiuIQfihhG-oDtZNOpQ24Rw3BwrQvLRkHZxjk</p>`,
-                            });
-
-                            res.status(200).json({ message: 'Email sent' });
-                        } catch {
-                            res.status(500).json({ message: 'Email not sent' });
-                        }
-                    } else {
-                        res.status(400).json({
-                            message: 'Email not sent',
+                // if (employees.some((employee) => employee.email === email)) {
+                if (email) {
+                    try {
+                        await transporter.sendMail({
+                            text: 'Texto do Email',
+                            subject: 'Admin Token - Validade',
+                            from: 'Noreply InteliBlockChain<noreply@InteliBlockChain.com>',
+                            to: `${email}`,
+                            html: `<p>Seu token de acesso é: <br/>${process.env.JWT_SECRET}</p>`,
                         });
+
+                        res.status(200).json({ message: 'Email sent' });
+                    } catch {
+                        res.status(500).json({ message: 'Email not sent' });
                     }
                 } else {
-                    res.status(400).json({
-                        message: 'Email not found',
+                    res.status(500).json({
+                        message: 'Email not sent',
                     });
                 }
+                // } else {
+                //     res.status(500).json({
+                //         message: 'Email not found',
+                //     });
+                // }
             } catch (error) {
                 res.status(400).json({ success: false });
             }
