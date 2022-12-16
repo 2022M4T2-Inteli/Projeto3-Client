@@ -1,5 +1,4 @@
 import dbConnect from '@lib/dbConnect';
-import Employee from '@models/';
 
 export default async function handler(req, res) {
     await dbConnect();
@@ -8,16 +7,12 @@ export default async function handler(req, res) {
 
     switch (method) {
         case 'GET':
-
             break;
 
         case 'POST':
-
-
             break;
 
         case 'DELETE':
-            
             break;
     }
 }
