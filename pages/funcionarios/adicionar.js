@@ -75,7 +75,7 @@ const Adicionar = () => {
                     </div>
 
                     <div className={'p-0 w-full mb-4'}>
-                        <p className="font-bold mb-2">Cargo:</p>
+                        <p className="font-bold mb-2">Email:</p>
                         <input
                             type={'email'}
                             className="bg-[#f7f7f9] rounded-xl px-4 py-4 w-full shadow-lg"
